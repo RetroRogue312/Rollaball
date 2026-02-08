@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4236569708967639262}
   - component: {fileID: 2681246614494225170}
   - component: {fileID: 7819117375183074389}
+  - component: {fileID: 1258578934675502237}
   m_Layer: 0
   m_Name: PickUp
   m_TagString: PickUp
@@ -125,3 +126,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab4abe3fe834e543834eb6c0156981c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!54 &1258578934675502237
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8458507371546074567}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
