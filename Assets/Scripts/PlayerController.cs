@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,8 +9,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+  
+    }
+
+    void onMove (InputValue movementValue)
     {
         
     }
