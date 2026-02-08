@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         if (count >= 7)
         {
             winTextObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
 
