@@ -1665,6 +1665,7 @@ MonoBehaviour:
   countText: {fileID: 668890234}
   winTextObject: {fileID: 1131214876}
   winAudio: {fileID: 416492427}
+  pickUpAudio: {fileID: 685652230}
 --- !u!1001 &1092518505
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,12 +13,12 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
     public AudioSource winAudio;
+    public AudioSource pickUpAudio;
 
 
     void Start()
     {
         rb = GetComponent <Rigidbody>();
-        winAudio = GetComponent<AudioSource>();
         count = 0;
         SetCountText();
         winTextObject.SetActive(false);
@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PickUp"))
         {
+            pickUpAudio.Play();
             other.gameObject.SetActive(false);
             count += 1;
             SetCountText();
