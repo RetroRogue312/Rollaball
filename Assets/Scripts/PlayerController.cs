@@ -12,13 +12,17 @@ public class PlayerController : MonoBehaviour
     private int count;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public AudioSource winAudio;
+
 
     void Start()
     {
         rb = GetComponent <Rigidbody>();
+        winAudio = GetComponent<AudioSource>();
         count = 0;
         SetCountText();
         winTextObject.SetActive(false);
+        
     }
 
     void OnMove (InputValue movementValue)
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         if (count >= 7)
         {
+            winAudio.Play();
             winTextObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
