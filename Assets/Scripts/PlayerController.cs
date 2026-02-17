@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource winAudio;
     public AudioSource pickUpAudio;
     public AudioSource loseAudio;
+    public AudioSource BGM;
 
 
     void Start()
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
         countText.text = "Count: " + count.ToString();
         if (count >= 7)
         {
+            BGM.Stop();
             winAudio.Play();
             winTextObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
             {
+                BGM.Stop();
                 loseAudio.Play();
                 Destroy(gameObject);
                 winTextObject.gameObject.SetActive(true);
