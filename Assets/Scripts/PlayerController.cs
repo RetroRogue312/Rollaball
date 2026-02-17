@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             {
                 BGM.Stop();
                 loseAudio.Play();
-                Destroy(gameObject);
+                gameObject.SetActive(false);
                 winTextObject.gameObject.SetActive(true);
                 winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
             }
