@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     public AudioSource winAudio;
     public AudioSource pickUpAudio;
+    public AudioSource loseAudio;
 
 
     void Start()
@@ -64,6 +65,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
             {
+                loseAudio.Play();
                 Destroy(gameObject);
                 winTextObject.gameObject.SetActive(true);
                 winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
