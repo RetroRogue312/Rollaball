@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public AudioSource pickUpAudio;
     public AudioSource loseAudio;
     public AudioSource BGM;
+    public ParticleSystem deathBurst;
+    public ParticleSystem pickupBurst;
+    public ParticleSystem enemyBurst;
 
 
     void Start()
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
             BGM.Stop();
             winAudio.Play();
             winTextObject.SetActive(true);
+            Instantiate(enemyBurst, GameObject.FindGameObjectWithTag("Enemy").transform.position, Quaternion.identity);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
@@ -57,6 +61,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("PickUp"))
         {
             pickUpAudio.Play();
+            Instantiate(pickupBurst, other.transform.position, Quaternion.identity);
             other.gameObject.SetActive(false);
             count += 1;
             SetCountText();
@@ -69,6 +74,8 @@ public class PlayerController : MonoBehaviour
             {
                 BGM.Stop();
                 loseAudio.Play();
+                Instantiate(deathBurst, transform.position, Quaternion.identity);
+                deathBurst.Play();
                 gameObject.SetActive(false);
                 winTextObject.gameObject.SetActive(true);
                 winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
