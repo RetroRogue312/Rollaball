@@ -5,6 +5,7 @@ public class PlayScript : MonoBehaviour
     public GameObject[] hidden;
     public GameObject[] shown;
     public AudioSource gameMusic;
+    public AudioSource menuMusic;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +30,7 @@ public class PlayScript : MonoBehaviour
         {
             s.SetActive(false);
         }
+        menuMusic.Stop();
 
     }
 }
