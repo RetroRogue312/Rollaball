@@ -9,6 +9,7 @@ TagManager:
   - hidden
   - shown
   - placeholder
+  - Obstacle
   layers:
   - Default
   - TransparentFX
