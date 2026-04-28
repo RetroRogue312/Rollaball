@@ -1297,6 +1297,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8583231811790552119, guid: 558b1c753e71f5a469944f30bebac249, type: 3}
   m_PrefabInstance: {fileID: 723696670}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &739240663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4030975049727308719, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
+  m_PrefabInstance: {fileID: 1245855684}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &739240665
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739240663}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.7144251
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.35721254, z: 0}
 --- !u!1 &765317626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2072,6 +2100,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup_PotionBottle
       objectReference: {fileID: 0}
+    - target: {fileID: 4030975049727308719, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
+      propertyPath: m_TagString
+      value: potion
+      objectReference: {fileID: 0}
     - target: {fileID: 5967287112541098137, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.13
@@ -2115,7 +2147,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4030975049727308719, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1355872018}
   m_SourcePrefab: {fileID: 100100000, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
 --- !u!1 &1021353373
 GameObject:
@@ -2313,6 +2348,9 @@ MonoBehaviour:
   deathBurst: {fileID: 41062706053825367, guid: 84311ea0057de774ba56812d5bcc23ff, type: 3}
   pickupBurst: {fileID: 6546206527417935068, guid: 5eb7f612660f7954787230f5f4e7d224, type: 3}
   enemyBurst: {fileID: 8463613409987844905, guid: 9d6971d2f68e96643ad364874509954e, type: 3}
+  enemies:
+  - {fileID: 1204410836}
+  - {fileID: 256963252}
   isMoving: 0
 --- !u!114 &1021353381
 MonoBehaviour:
@@ -2549,7 +2587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1131214877
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2566,7 +2604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 46.04}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131214878
@@ -2591,15 +2629,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: You Win!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 613943c21ae12f344b4ef21d67bb793b, type: 2}
+  m_sharedMaterial: {fileID: 7424973271962935048, guid: 613943c21ae12f344b4ef21d67bb793b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2967,6 +3005,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup_PotionBottle (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4030975049727308719, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
+      propertyPath: m_TagString
+      value: potion
+      objectReference: {fileID: 0}
     - target: {fileID: 5967287112541098137, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.04
@@ -3010,8 +3052,39 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4030975049727308719, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 739240665}
   m_SourcePrefab: {fileID: 100100000, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
+--- !u!1 &1355872016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4030975049727308719, guid: b34e0d64329b0684da8bf2973df0bf63, type: 3}
+  m_PrefabInstance: {fileID: 1013365997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1355872018
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355872016}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.7922397
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.39611983, z: 0}
 --- !u!1001 &1364869012
 PrefabInstance:
   m_ObjectHideFlags: 0

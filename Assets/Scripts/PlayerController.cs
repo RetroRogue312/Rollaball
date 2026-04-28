@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem deathBurst;
     public ParticleSystem pickupBurst;
     public ParticleSystem enemyBurst;
-    
+    public GameObject[] enemies;
     private Vector3 targetPos;
     [SerializeField] private bool isMoving = false;
 
@@ -84,40 +85,58 @@ public class PlayerController : MonoBehaviour
                     targetPos = hit.point;
                     isMoving = true;
                 }
-                }
                 else
                 {
                     isMoving = false;
                 }
             }
         }
-
-        void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("PickUp"))
-            {
-                pickUpAudio.Play();
-                Instantiate(pickupBurst, other.transform.position, Quaternion.identity);
-                other.gameObject.SetActive(false);
-                count += 1;
-                SetCountText();
-            }
-        }
-
-        void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
-            {
-                BGM.Stop();
-                loseAudio.Play();
-                Instantiate(deathBurst, transform.position, Quaternion.identity);
-                deathBurst.Play();
-                gameObject.SetActive(false);
-                winTextObject.gameObject.SetActive(true);
-                winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
-                collision.gameObject.GetComponentInChildren<Animator>().SetFloat("speed_f", 0);
-            }
-        }
-
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            pickUpAudio.Play();
+            Instantiate(pickupBurst, other.transform.position, Quaternion.identity);
+            other.gameObject.SetActive(false);
+            count += 1;
+            SetCountText();
+        }
+    }
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
+        {
+            BGM.Stop();
+            loseAudio.Play();
+            Instantiate(deathBurst, transform.position, Quaternion.identity);
+            deathBurst.Play();
+            gameObject.SetActive(false);
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
+            collision.gameObject.GetComponentInChildren<Animator>().SetFloat("speed_f", 0);
+        }
+		if (collision.gameObject.CompareTag("potion"))
+		{
+            collision.gameObject.SetActive(false);
+			StartCoroutine(powerUpRoutine(5.0f));
+		}
+    }
+
+	private IEnumerator powerUpRoutine(float time)
+	{
+		foreach (GameObject e in enemies)
+            e.GetComponent<Collider>().enabled = false;
+        Debug.Log("Player is now invincible");
+		
+        yield return new WaitForSeconds(time);
+
+        foreach (GameObject e in enemies)
+            e.GetComponent<Collider>().enabled = true;
+        Debug.Log("Back to Normal status");
+		
+	}
+}
 
