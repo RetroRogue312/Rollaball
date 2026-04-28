@@ -55,6 +55,14 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
     }
+    
+    private void Update()
+    {
+        if (Pointer.current.press.isPressed)
+        {
+            Debug.Log("Mouse Clicked");
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {

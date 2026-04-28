@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class PlayScript : MonoBehaviour
 {
-    public GameObject[] hidden;
-    public GameObject[] shown;
     public AudioSource gameMusic;
     public AudioSource menuMusic;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -20,16 +18,8 @@ public class PlayScript : MonoBehaviour
 
     public void startGame()
     {
+        Time.timeScale = 1;
         gameMusic.Play();
-        foreach(GameObject h in hidden)
-        {
-            h.SetActive(true);
-        }
-        Destroy(GameObject.FindGameObjectWithTag("placeholder"));
-        foreach(GameObject s in shown)
-        {
-            s.SetActive(false);
-        }
         menuMusic.Stop();
 
     }
