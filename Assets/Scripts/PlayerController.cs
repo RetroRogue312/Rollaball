@@ -60,7 +60,9 @@ public class PlayerController : MonoBehaviour
     {
         if (Pointer.current.press.isPressed)
         {
-            Debug.Log("Mouse Clicked");
+            Vector2 aimPosition = Pointer.current.position.ReadValue();
+            Ray ray = Camera.main.ScreenPointToRay(aimPosition);
+            Debug.DrawRay(ray.origin, ray.direction * 50, Color.yellow);
         }
     }
 
