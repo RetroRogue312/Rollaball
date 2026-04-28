@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         if (Vector3.Distance(rb.position, targetPos) < 0.5f)
             isMoving = false;
     }
-    
+
     private void Update()
     {
         if (Pointer.current.press.isPressed)
@@ -79,31 +79,34 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                targetPos = hit.point;
-                isMoving = true;
-            }
-            else
-            {
-                isMoving = false;
+                if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                {
+                    targetPos = hit.point;
+                    isMoving = true;
+                }
+                }
+                else
+                {
+                    isMoving = false;
+                }
             }
         }
-    }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("PickUp"))
+        void OnTriggerEnter(Collider other)
         {
-            pickUpAudio.Play();
-            Instantiate(pickupBurst, other.transform.position, Quaternion.identity);
-            other.gameObject.SetActive(false);
-            count += 1;
-            SetCountText();
+            if (other.gameObject.CompareTag("PickUp"))
+            {
+                pickUpAudio.Play();
+                Instantiate(pickupBurst, other.transform.position, Quaternion.identity);
+                other.gameObject.SetActive(false);
+                count += 1;
+                SetCountText();
+            }
         }
-    }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
+        void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Obstacle"))
             {
                 BGM.Stop();
                 loseAudio.Play();
@@ -114,7 +117,7 @@ public class PlayerController : MonoBehaviour
                 winTextObject.GetComponent<TextMeshProUGUI>().text = "You Lose!";
                 collision.gameObject.GetComponentInChildren<Animator>().SetFloat("speed_f", 0);
             }
+        }
+
     }
 
-
-}
