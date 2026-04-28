@@ -57,6 +57,16 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 movement = new Vector3 (movementX, 0.0f, movementY);
         rb.AddForce(movement * speed);
+
+        if (isMoving)
+        {
+            Vector3 direction = targetPos - rb.position;
+            direction.Normalize();
+            rb.AddForce(direction * speed);
+        }
+
+        if (Vector3.Distance(rb.position, targetPos) < 0.5f)
+            isMoving = false;
     }
     
     private void Update()
