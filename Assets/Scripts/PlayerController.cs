@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem deathBurst;
     public ParticleSystem pickupBurst;
     public ParticleSystem enemyBurst;
+    
+    private Vector3 targetPos;
+    [SerializeField] private bool isMoving = false;
 
 
     void Start()
@@ -63,6 +66,16 @@ public class PlayerController : MonoBehaviour
             Vector2 aimPosition = Pointer.current.position.ReadValue();
             Ray ray = Camera.main.ScreenPointToRay(aimPosition);
             Debug.DrawRay(ray.origin, ray.direction * 50, Color.yellow);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                targetPos = hit.point;
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
         }
     }
 
